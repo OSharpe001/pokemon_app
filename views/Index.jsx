@@ -11,6 +11,7 @@ module.exports = function Index({ pokemon }) {
     const h1Style ={
         color: "black",
         margin: "0 auto 20px",
+        textDecoration: "underline",
     };
 
     const listStyle = {
@@ -51,7 +52,7 @@ module.exports = function Index({ pokemon }) {
                 {pokemon.map((fighter, index) => {
                     return (
                         <li key={index} style={listStyle}>
-                            <h2 style={nameStyle}>{capitalizePhrase(fighter.name)}</h2>
+                            <a href={`/pokemon/${index}`} style={nameStyle}><h2 >{capitalizePhrase(fighter.name)}</h2></a> 
                             <img style={imageStyle} src={`${fighter.img}.png`} alt={capitalizePhrase(fighter.name)} />
                             <br/><br/>
                         </li>
