@@ -1,65 +1,57 @@
-import React from 'react'
+import React from 'react';
+
 
 module.exports = function Index({ pokemon }) {
-    const myStyle = {
-        color: '#ddddff',
-        backgroundColor: '#888888',
-        textAlign: "center",
-        textDecoration: "underline",
-    };
-
-    const h1Style ={
-        color: "black",
-        margin: "0 auto 20px",
-        textDecoration: "underline",
-    };
-
-    const listStyle = {
-        display: "flex",
-        flexDirection: "row",
-    };
-
-    const nameStyle = {
-        flex: "50%",
-        margin: "10px 20px",
-        textAlign: "left",
-        alignSelf: "center",
-    };
-
-    const imageStyle = {
-        flex: "50%",
-        margin: "10px 20px",
-        textAlign: "left",
-        borderRadius: "0 16px",
-        border: "2px ridge black"
-    };
-    const buttonStyle = {
-        width: "fit-content",
-        height: "fit-content",
-        textDecoration: "none",
-        margin: "20px auto 0",
-    };
 
     const capitalizePhrase = (noun) => {
         const cappedNoun = noun.charAt(0).toUpperCase()+noun.slice(1).toLowerCase();
         return cappedNoun;
     };
 
+    const myStyle = {
+        backgroundColor: '#888888',
+        textAlign: "center",
+        minHeight: "98vh",
+    };
+
+    const h1Style = {
+        color: "black",
+        margin: "0 auto 15px",
+        textDecoration: "underline",
+    };
+
+    const listItemStyle = {
+        listStyleType: "none",
+        width: "fit-content",
+    };
+
+    const nameStyle = {
+        margin: "0 0 0 20px",
+        textAlign: "left",
+    };
+
+    const buttonStyle = {
+        margin: "20px auto",
+    };
+
+    const linkStyle = {
+        fontSize: "12pt",
+        padding: "4px 6px",
+    };
+
     return (
         <div style={myStyle}>
-            <h1 style={h1Style}>See All The Pokemon!</h1>
+            <h1 style={h1Style}>See All Of Our Pokemon!</h1>
             <ul>
                 {pokemon.map((fighter, index) => {
                     return (
-                        <li key={index} style={listStyle}>
-                            <a href={`/pokemon/${index}`} style={nameStyle}><h2 >{capitalizePhrase(fighter.name)}</h2></a> 
-                            <img style={imageStyle} src={`${fighter.img}.png`} alt={capitalizePhrase(fighter.name)} />
-                            <br/><br/>
+                        <li key={index} style={listItemStyle}>
+                            <a href={`/pokemon/${index}`} style={nameStyle}><h2 >{capitalizePhrase(fighter.name)}</h2></a>
                         </li>
                     )
                 })}
             </ul>
-            <button style={buttonStyle}><a href="/">Back to home page</a></button>
+            <button style={buttonStyle}><a style={linkStyle} href="/">Back to home page</a></button>
         </div>
     );
 };

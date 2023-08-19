@@ -1,14 +1,8 @@
 const express = require("express");
-const pokemon = require("./models/pokemon.js")
+const pokemon = require("./models/pokemon.js");
 
 const app = express();
 const port = 5006;
-
-// const indexStyle = {
-//     backgroundColor: '#888888',
-//     textAlign: "center",
-//     textDecoration: "underline",
-// };
 
 // VIEW ENGINE
 app.set("views", `${__dirname}/views`);
@@ -20,9 +14,9 @@ app.listen(port, (req, res) => {
     console.log(`Today's port ${port} was brought to you by the good folks at Express Server! Please enjoy...`);
 });
 
-// ROUTES    //style={{textAlign: "center", border:"2px solid red"}} 
+// ROUTES
 app.get("/", (req, res) => {
-    res.send(`<h1>Welcome to the Pokemon App!</h1><br/><br/><a href="pokemon">Go To Pokemon Page</a>`)
+    res.send(`<h1>Welcome to the Pokemon App!</h1><br/><br/><button><a href="pokemon">Go To Pokemon Page</a></button>`);
 });
 
 app.get("/pokemon", (req, res) => {
@@ -32,10 +26,9 @@ app.get("/pokemon", (req, res) => {
 });
 
 app.get("/pokemon/:id", (req, res) => {
-    res.send(req.params.id);
-    // res.render("Index", {
-    //     pokemon: pokemon
-    // });
+    res.render("Show", {
+        pokemon: pokemon[req.params.id]
+    });
 });
 
 // nodemon
