@@ -43,13 +43,12 @@ module.exports = function Index({ pokemon }) {
         <div style={myStyle}>
             <h1 style={h1Style}>See All Of Our Pokemon!</h1>
             <ul>
-                {pokemon.map((fighter, index) => {
-                    return (
+                {pokemon.map((fighter, index) => (
                         <li key={index} style={listItemStyle}>
                             <a href={`/pokemon/${index}`} style={nameStyle}><h2 >{capitalizePhrase(fighter.name)}</h2></a>
                         </li>
                     )
-                })}
+                )}
             </ul>
             <button style={buttonStyle}><a style={linkStyle} href="/">Back to home page</a></button>
         </div>
