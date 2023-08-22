@@ -43,7 +43,9 @@ module.exports = function Index({ pokemon }) {
     return (
         <div style={myStyle}>
             <h1 style={h1Style}>See All Of Our Pokemon!</h1>
-            
+            <nav>
+                <button style={buttonStyle}><a style={linkStyle} href="/pokemon/new">Create New Pokemon Entry</a></button>
+            </nav>
             <ul>
                 {pokemon.map((fighter, index) => (
                         <li key={index} style={listItemStyle}>
