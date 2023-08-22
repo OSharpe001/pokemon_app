@@ -18,6 +18,7 @@ module.exports = function Show({ pokemon }) {
 
     const h1Style = {
         color: "black",
+        padding: "15px",
         margin: "0 auto 20px",
         textDecoration: "underline",
     };

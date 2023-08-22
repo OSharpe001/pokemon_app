@@ -16,6 +16,7 @@ module.exports = function Index({ pokemon }) {
 
     const h1Style = {
         color: "black",
+        padding: "15px",
         margin: "0 auto 15px",
         textDecoration: "underline",
     };
@@ -42,6 +43,7 @@ module.exports = function Index({ pokemon }) {
     return (
         <div style={myStyle}>
             <h1 style={h1Style}>See All Of Our Pokemon!</h1>
+            
             <ul>
                 {pokemon.map((fighter, index) => (
                         <li key={index} style={listItemStyle}>

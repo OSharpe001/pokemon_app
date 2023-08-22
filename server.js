@@ -9,6 +9,14 @@ app.set("views", `${__dirname}/views`);
 app.set("view engine", "jsx");
 app.engine("jsx", require("express-react-views").createEngine());
 
+// MIDDLEWARE
+app.use((req, res, next) => {
+    console.log("I run for all routes!")
+    next();
+});
+// THIS ALLOWS THE BODY OF A POST REQUEST
+app.use(express.urlencoded({extended: false}))
+
 // LISTENER
 app.listen(port, (req, res) => {
     console.log(`Today's port ${port} was brought to you by the good folks at Express Server! Please enjoy...`);
@@ -27,7 +35,16 @@ app.get("/pokemon", (req, res) => {
 
 // -"NEW" POKEMON ROUTE-
 app.get("/pokemon/new", (req, res) => {
-    res.send(pokemon)
+    res.render("New");
+});
+// POST ROUTE FOR POKEMON
+app.post("/pokemon", (req,res) => {
+    console.log("REQ.BODY BEFORE ANY CHANGES: ", req.body);
+    !req.body.img || !req.body.img.includes("http") ? req.body.img = `http://img.pokemondb.net/artwork/${req.body.name.toLowerCase()}` : req.body.img = req.body.img.toLowerCase();
+    req.body.name = req.body.name.toLowerCase();
+    pokemon.push(req.body);
+    console.log("REQ.BODY AFTER CHANGES: ", req.body);
+    res.redirect("/pokemon");
 });
 
 app.get("/pokemon/:id", (req, res) => {
