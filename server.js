@@ -25,6 +25,11 @@ app.get("/pokemon", (req, res) => {
     });
 });
 
+// -"NEW" POKEMON ROUTE-
+app.get("/pokemon/new", (req, res) => {
+    res.send(pokemon)
+});
+
 app.get("/pokemon/:id", (req, res) => {
     res.render("Show", {
         pokemon: pokemon[req.params.id]
