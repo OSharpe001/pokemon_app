@@ -3,6 +3,8 @@ import React from 'react';
 
 module.exports = function Index({ pokemon }) {
 
+    console.log("POKEMON INFO: ", pokemon)
+
     const capitalizePhrase = (noun) => {
         const cappedNoun = noun.charAt(0).toUpperCase()+noun.slice(1).toLowerCase();
         return cappedNoun;
@@ -49,7 +51,7 @@ module.exports = function Index({ pokemon }) {
             <ul>
                 {pokemon.map((fighter, index) => (
                         <li key={index} style={listItemStyle}>
-                            <a href={`/pokemon/${index}`} style={nameStyle}><h2 >{capitalizePhrase(fighter.name)}</h2></a>
+                            <a href={`/pokemon/${fighter.id}`} style={nameStyle}><h2 >{capitalizePhrase(fighter.name)}</h2></a>
                         </li>
                     )
                 )}
