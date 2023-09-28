@@ -1,8 +1,8 @@
 import React from 'react';
-const Default = require("./layout/Default");
+import Default from "./layout/Default";
 
 
-module.exports = function New() {
+module.exports = function Edit({ pokemon }) {
 
     const myStyle = {
         backgroundColor: '#888888',
@@ -45,15 +45,15 @@ module.exports = function New() {
     };
 
   return (
-    <Default bodyStyle={myStyle} headerStyle={h1Style} title={"New Pokemon Entry"}>
-        <form action="/pokemon" method="POST">
+    <Default bodyStyle={myStyle} headerStyle={h1Style} title={`Edit ${pokemon.name}`}>
+        <form action={`/pokemon/${pokemon._id}?_method=PUT`} method="POST">
             <label style={labelStyle} htmlFor="name">Pokemon Name: </label>
-            <input style={inputStyle} name="name" type="text" placeholder="Pikachu"/>
+            <input style={inputStyle} name="name" type="text" defaultValue={pokemon.name} />
             <br/>
             <label style={labelStyle} htmlFor="img">Pokemon Picture Url: </label>
-            <input style={inputStyle} name="img" type="text" placeholder="http://img.pokemondb.net/artwork/Pikachu"/>
+            <input style={inputStyle} name="img" type="text" defaultValue={pokemon.img} />
             <br/>
-            <input style={submitButtonStyle}type="submit" value="Create Pokemon Entry"/>
+            <input style={submitButtonStyle} type="submit" value="Update Pokemon" />
             <br/>
             <button style={buttonStyle}><a style={linkStyle} href="/pokemon">Cancel</a></button>
             <br/>

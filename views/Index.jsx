@@ -1,9 +1,10 @@
 import React from 'react';
+const Default = require("./layout/Default");
 
 
 module.exports = function Index({ pokemon }) {
 
-    console.log("POKEMON INFO: ", pokemon)
+    // console.log("POKEMON INFO: ", pokemon)
 
     const capitalizePhrase = (noun) => {
         const cappedNoun = noun.charAt(0).toUpperCase()+noun.slice(1).toLowerCase();
@@ -29,7 +30,7 @@ module.exports = function Index({ pokemon }) {
     };
 
     const nameStyle = {
-        margin: "0 0 0 20px",
+        margin: "0 0 0 30px",
         textAlign: "left",
     };
 
@@ -43,8 +44,7 @@ module.exports = function Index({ pokemon }) {
     };
 
     return (
-        <div style={myStyle}>
-            <h1 style={h1Style}>See All Of Our Pokemon!</h1>
+        <Default bodyStyle={myStyle} headerStyle={h1Style} title={"See All Of Our Pokemon!"}>
             <nav>
                 <button style={buttonStyle}><a style={linkStyle} href="/pokemon/new">Create New Pokemon Entry</a></button>
             </nav>
@@ -52,11 +52,15 @@ module.exports = function Index({ pokemon }) {
                 {pokemon.map((fighter, index) => (
                         <li key={index} style={listItemStyle}>
                             <a href={`/pokemon/${fighter.id}`} style={nameStyle}><h2 >{capitalizePhrase(fighter.name)}</h2></a>
+                            <form  method ="POST" action={`/pokemon/${fighter.id}?_method=DELETE`}>
+                                <input type="submit" value="DELETE" />
+                            </form>
+                            <a href={`/pokemon/${fighter.id}/edit`}>Edit This Pokemon</a>
                         </li>
                     )
                 )}
             </ul>
             <button style={buttonStyle}><a style={linkStyle} href="/">Back to home page</a></button>
-        </div>
+        </Default>
     );
 };

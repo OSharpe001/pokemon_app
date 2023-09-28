@@ -1,4 +1,5 @@
 import React from 'react';
+const Default = require("./layout/Default");
 
 
 module.exports = function Show({ pokemon }) {
@@ -46,12 +47,11 @@ module.exports = function Show({ pokemon }) {
     };
 
     return (
-        <div style={myStyle}>
-            <h1 style={h1Style}>Gotta Catch 'Em All!</h1>
+        <Default bodyStyle={myStyle} headerStyle={h1Style} title={"Gotta Catch 'Em All!"}>
             <h2 style={h2Style}>{capitalizePhrase(pokemon.name)}</h2>
             <img style={imageStyle} src={`${pokemon.img}.jpg`} alt={capitalizePhrase(pokemon.name)} />
             <button style={buttonStyle}><a style={linkStyle} href="/pokemon">Back</a></button>
             <button style={buttonStyle}><a style={linkStyle} href="/">Back to home page</a></button>
-        </div>
+        </Default>
     );
 };
